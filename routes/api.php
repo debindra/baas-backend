@@ -73,19 +73,19 @@
     Route::group(['middleware' => 'api', 'prefix' => 'v1/alarms', 'namespace' => 'Api\V1', 'as' => 'api.'], function ($router) {
 
         Route::get('/', [AlarmController::class, 'index']);
-        Route::get('/{alarmUid}', [AlarmController::class, 'getAlarmTemplateById']);
+        Route::get('/single/{alarmUid}', [AlarmController::class, 'getAlarmTemplateById']);
         Route::delete('/{alarmUid}', [AlarmController::class, 'deleteAlarmTemplate']);
 
-        Route::post('/{alarmUid}', [AlarmController::class, 'alarmTemplateClone']);
+        Route::post('/clone/{alarmUid}', [AlarmController::class, 'alarmTemplateClone']);
 
         Route::get('/events/{alarmUid}', [AlarmController::class, 'getAlarmEvents']);
 
-        Route::get('/alarms/active', [AlarmController::class, 'getAllActive']);
-        Route::get('/alarms/active/{activeAlarmUid}', [AlarmController::class, 'getActiveById']);
-        Route::delete('/alarms/active/{activeAlarmUid}', [AlarmController::class, 'deleteActiveById']);
+        Route::get('/alarm-active', [AlarmController::class, 'getAllActive']);
+        Route::get('/alarm-active/{activeAlarmUid}', [AlarmController::class, 'getActiveById']);
+        Route::delete('/alarm-active/{activeAlarmUid}', [AlarmController::class, 'deleteActiveById']);
 
-        Route::post('/alarms/active/{activeAlarmUid}/resolve', [AlarmController::class, 'activeResolve']);
-        Route::post('/alarms/active/{activeAlarmUid}/acknowledge', [AlarmController::class, 'activeAcknowledge']);
+        Route::post('/alarm-active/{activeAlarmUid}/resolve', [AlarmController::class, 'activeResolve']);
+        Route::post('/alarm-active/{activeAlarmUid}/acknowledge', [AlarmController::class, 'activeAcknowledge']);
     });
 
 

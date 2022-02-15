@@ -27,7 +27,6 @@
             $res = Http::withOptions(['verify' => false])
                 ->withToken($this->token)
                 ->get($fullUrl, $payload);
-
             return $res->object();
         }
 
